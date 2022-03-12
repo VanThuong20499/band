@@ -44,11 +44,13 @@
         </div>
         
         <!-- Begin Silider -->
-        <div id="slider">
-            <div class="text-content">
-                <h2 class="text-heading">Chicago</h2>
-                <b class="text-description">Thank you, Chicago - A night we won't forget.</b>
-            </div>
+        <div class="slider-all">
+            <!-- <div class="slider-3 slider">
+                <div class="text-content">
+                    <h2 class="text-heading">New York</h2>
+                    <b class="text-description">The atmosphere in New York is lorem ipsum.</b>
+                </div>
+            </div> -->
         </div>
         <!-- End Silider -->
 
@@ -259,4 +261,49 @@
         }
     </script>
 </body>
+    <script>
+        var sliderImg = document.querySelector('.slider-all')
+        function sleep(ms){
+            return new Promise((resolve) => {
+                setTimeout(resolve, ms)
+            })
+        }
+
+        function repeat(){
+            sleep(0)
+                .then(() => {
+                    sliderImg.innerHTML = `
+                        <div class="slider-1 slider">
+                            <div class="text-content">
+                                <h2 class="text-heading">Chicago</h2>
+                                <b class="text-description">Thank you, Chicago - A night we won't forget.</b>
+                            </div>
+                        </div>`
+                    return sleep(5000)
+                })
+                .then(() => {
+                    sliderImg.innerHTML = `
+                    <div class="slider-2 slider">
+                        <div class="text-content">
+                            <h2 class="text-heading">Los Angeles</h2>
+                            <b class="text-description">We had the best time playing at Venice Beach!</b>
+                        </div>
+                     </div>
+                    `
+                    return sleep(5000)
+                })
+                .then(() => {
+                    sliderImg.innerHTML = `
+                    <div class="slider-3 slider">
+                        <div class="text-content">
+                            <h2 class="text-heading">New York</h2>
+                            <b class="text-description">The atmosphere in New York is lorem ipsum.</b>
+                        </div>
+                    </div>
+                    `
+                    return repeat()
+                })
+        }
+        repeat()
+    </script>
 </html>
